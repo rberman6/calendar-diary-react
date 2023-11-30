@@ -4,6 +4,7 @@ import Months from "@/components/Months.jsx";
 import Years from "@/components/Years.jsx";
 import { useState } from "react";
 import Dates from "@/components/Dates.jsx";
+import Form from "@/components/Form.jsx";
 
 export default function App() {
   let month = new Date().toLocaleString("en-US", { month: "long" });
@@ -13,14 +14,19 @@ export default function App() {
   const [selectedMonth, setSelectedMonth] = useState(month);
   const [selectedDay, setSelectedDay] = useState(day);
   // console.log(selectedYear);
-  // console.log(day);
 
   return (
     <main id="flex-container">
       <h1>Calendar Dairy</h1>
       <Months setSelectedMonth={setSelectedMonth} month={selectedMonth} />
       <Years setSelectedYear={setSelectedYear} year={selectedYear} />
-      <Dates day={selectedDay} setSelectedDay={setSelectedDay} />
+      <Dates
+        day={selectedDay}
+        setSelectedDay={setSelectedDay}
+        month={selectedMonth}
+        year={selectedYear}
+      />
+      <Form />
     </main>
   );
 }
