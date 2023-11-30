@@ -3,7 +3,7 @@ import { useState } from "react";
 
 export default function Dates({ day, setSelectedDay, month, year }) {
   const [dates, setDates] = useState(datesArr);
-  const [isClicked, setIsClicked] = useState(false);
+  // const [isClicked, setIsClicked] = useState(false);
 
   //  console.log(dates);
   // console.log(day);
@@ -42,6 +42,13 @@ export default function Dates({ day, setSelectedDay, month, year }) {
     setSelectedDay(clickedDay);
     // setIsClicked(true);
     // console.log(clickedDay);
+    setDates((prevDates) =>
+      prevDates.map((date) =>
+        date.id === id
+          ? { ...date, clicked: true }
+          : { ...date, clicked: false }
+      )
+    );
   }
 
   // console.log(day);
@@ -52,7 +59,7 @@ export default function Dates({ day, setSelectedDay, month, year }) {
         return (
           <li
             onClick={() => handleClickDate(day.date, day.id)}
-            className={isClicked ? "clicked" : "date-container"}
+            className={day.clicked ? "clicked" : "date-container"}
             key={day.id}
           >
             {day.date}
