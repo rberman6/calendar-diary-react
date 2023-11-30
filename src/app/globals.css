@@ -47,11 +47,28 @@
     border-radius: 5px;
 }
 
-.date-container:hover {
-    background-color: pink;
+
+.clicked {
+    background-color: lightgreen;
+    list-style: none;
+    width: 80px;
+    height: 60px;
+    border: 2px solid black;
+    border-radius: 5px;
 }
 
+/* Form styles */
+#container {
+    margin-top: 30px;;
+}
 
-.color-box {
-    background-color: blue;
+.form-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+}
+
+.form-button {
+    padding: 10px 15px;
 }

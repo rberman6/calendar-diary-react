@@ -3,6 +3,7 @@ import { useState } from "react";
 
 export default function Dates({ day, setSelectedDay, month, year }) {
   const [dates, setDates] = useState(datesArr);
+  const [isClicked, setIsClicked] = useState(false);
 
   //  console.log(dates);
   // console.log(day);
@@ -34,12 +35,12 @@ export default function Dates({ day, setSelectedDay, month, year }) {
   // filter the date objects. Only include date property that is less than or equal to calculated daysInMonth
   const filteredDates = dates.filter((dateObj) => dateObj.date <= daysInMonth);
   console.log(filteredDates);
-  console.log(daysInMonth);
 
-  function handleClickDate(clickedDay) {
+  function handleClickDate(clickedDay, id) {
     // console.log("clicked");
     // update selectedDayState
     setSelectedDay(clickedDay);
+    // setIsClicked(true);
     // console.log(clickedDay);
   }
 
@@ -50,8 +51,8 @@ export default function Dates({ day, setSelectedDay, month, year }) {
       {filteredDates.map((day) => {
         return (
           <li
-            onClick={() => handleClickDate(day.date)}
-            className="date-container"
+            onClick={() => handleClickDate(day.date, day.id)}
+            className={isClicked ? "clicked" : "date-container"}
             key={day.id}
           >
             {day.date}

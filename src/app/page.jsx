@@ -26,7 +26,7 @@ export default function App() {
         month={selectedMonth}
         year={selectedYear}
       />
-      <Form />
+      <Form day={selectedDay} month={selectedMonth} year={selectedYear} />
     </main>
   );
 }
