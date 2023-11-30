@@ -19,19 +19,23 @@ export default function Months({ month, setSelectedMonth }) {
   ];
 
   function handleClickPrevious() {
-    console.log("clicked");
-  }
-
-  function handleClickForward() {
-    console.log("clicked");
     let i = namedMonth.indexOf(month);
     console.log("Current month index:", i);
-    if (i < namedMonth.length - 1) {
-      i++;
+    if (i < namedMonth.length) {
+      i--;
       console.log(("New month index:", i));
     }
     setSelectedMonth(namedMonth[i]);
     console.log(namedMonth[i]);
+  }
+
+  function handleClickForward() {
+    let i = namedMonth.indexOf(month);
+
+    if (i < namedMonth.length - 1) {
+      i++;
+    }
+    setSelectedMonth(namedMonth[i]);
   }
 
   return (
