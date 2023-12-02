@@ -49,12 +49,16 @@
 
 
 .clicked {
-    background-color: lightgreen;
+    background-color: rgb(255, 218, 224);
     list-style: none;
     width: 80px;
     height: 60px;
     border: 2px solid black;
     border-radius: 5px;
+}
+
+.mail-emoji {
+    visibility: hidden;
 }
 
 /* Form styles */

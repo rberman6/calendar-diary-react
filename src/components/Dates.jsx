@@ -3,7 +3,6 @@ import { useState } from "react";
 
 export default function Dates({ day, setSelectedDay, month, year }) {
   const [dates, setDates] = useState(datesArr);
-  // const [isClicked, setIsClicked] = useState(false);
 
   //  console.log(dates);
   // console.log(day);
@@ -27,14 +26,14 @@ export default function Dates({ day, setSelectedDay, month, year }) {
 
   // creates a new date object with selected year & month. Added 1 because months is zero indexed for months. Setting it to zero gives you the last day of the selected month
   const date = new Date(year, namedMonth.indexOf(month) + 1, 0);
-  // extracts the day of the month from date object
+  // extracts the days of the month from date object
   const daysInMonth = date.getDate();
-  console.log(date);
-  console.log(daysInMonth);
+  // console.log(date);
+  // console.log(daysInMonth);
 
   // filter the date objects. Only include date property that is less than or equal to calculated daysInMonth
   const filteredDates = dates.filter((dateObj) => dateObj.date <= daysInMonth);
-  console.log(filteredDates);
+  // console.log(filteredDates);
 
   function handleClickDate(clickedDay, id) {
     // console.log("clicked");
@@ -63,7 +62,7 @@ export default function Dates({ day, setSelectedDay, month, year }) {
             key={day.id}
           >
             {day.date}
-            <div className="mail"></div>
+            <div className="mail-emoji">💌</div>
           </li>
         );
       })}
