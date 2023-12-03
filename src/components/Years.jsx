@@ -11,16 +11,16 @@ export default function Years({ year, setSelectedYear }) {
   }
 
   return (
-    <main>
+    <div id="year-div">
       <div id="year-container">
         <button onClick={handleClickDecrement} className="calendar-btn">
           Previous
         </button>
         <h2>{year}</h2>
         <button onClick={handleClickIncrement} className="calendar-btn">
-          Forward
+          Next
         </button>
       </div>
-    </main>
+    </div>
   );
 }

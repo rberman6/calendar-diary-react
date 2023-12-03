@@ -7,28 +7,28 @@ export default function Form({ day, emoji, setEmoji }) {
   const [displayText, setDisplayText] = useState({});
 
   function handleOnChange(e, day) {
-    const date = `${day}`;
-    setTextEntry((prevState) => ({
-      ...prevState,
-      [date]: e.target.value,
-    }));
+    const dateId = `${day}`;
+    setTextEntry({
+      ...textEntry,
+      [dateId]: e.target.value,
+    });
   }
 
   console.log(textEntry);
 
   function handleSubmit(e, day) {
     e.preventDefault();
-    const date = `${day}`;
+    const dateId = `${day}`;
     setDisplayText({
       ...displayText,
-      [date]: true,
+      [dateId]: true,
     });
     // Create an obj that stores the specfic date as property and value would be true
-    // when user clicks button, textarea will be disable when disable[date] state is true using conditional rendering
-    setEmoji((prevState) => ({
-      ...prevState,
-      [date]: "💌",
-    }));
+    // when user clicks button, textarea will be disable when displayText[dateId] state is true using conditional rendering
+    setEmoji({
+      ...emoji,
+      [dateId]: "💌",
+    });
   }
 
   console.log(emoji);
@@ -39,17 +39,27 @@ export default function Form({ day, emoji, setEmoji }) {
   return (
     <div id="container">
       {displayText[currentDate] ? (
-        <p className="text-display">{textEntry[currentDate]}</p>
+        <div className="text-display">
+          <p className="text-style">{textEntry[currentDate]}</p>
+        </div>
       ) : (
-        <form onSubmit={(e) => handleSubmit(e, day)} className="form-container">
-          <textarea
-            onChange={(e) => handleOnChange(e, day)}
-            value={textEntry[currentDate]}
-            cols="76"
-            rows="10"
-          ></textarea>
-          <button className="form-button">Add Entry</button>
-        </form>
+        <div>
+          <h3 className="form-instructions">
+            Select a date & add an entry below:
+          </h3>
+          <form
+            onSubmit={(e) => handleSubmit(e, day)}
+            className="form-container"
+          >
+            <textarea
+              onChange={(e) => handleOnChange(e, day)}
+              value={textEntry[currentDate]}
+              cols="76"
+              rows="10"
+            ></textarea>
+            <button className="form-button">Add Entry</button>
+          </form>
+        </div>
       )}
     </div>
   );

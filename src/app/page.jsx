@@ -10,11 +10,11 @@ export default function App() {
   let month = new Date().toLocaleString("en-US", { month: "long" });
   let year = new Date().getFullYear();
   let day = new Date().getDate();
+  // initializing states with current date, month & year.
   const [selectedYear, setSelectedYear] = useState(year);
   const [selectedMonth, setSelectedMonth] = useState(month);
   const [selectedDay, setSelectedDay] = useState(day);
   const [emoji, setEmoji] = useState({});
-  // console.log(selectedYear);
 
   return (
     <main id="flex-container">

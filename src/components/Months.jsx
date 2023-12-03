@@ -34,16 +34,16 @@ export default function Months({ month, setSelectedMonth }) {
   }
 
   return (
-    <main id="flex-container">
+    <div id="month-div">
       <div id="month-container">
         <button onClick={handleClickPrevious} className="calendar-btn">
           Previous
         </button>
         <h2>{month}</h2>
         <button onClick={handleClickForward} className="calendar-btn">
-          Forward
+          Next
         </button>
       </div>
-    </main>
+    </div>
   );
 }

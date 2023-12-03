@@ -1,6 +1,6 @@
 /* Global styles */
 * {
-    box-sizing: border-box;
+    box-sizing: border-box; 
 }
 
 /* page.jsx styles*/
@@ -9,6 +9,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-bottom: 100px;
 }
 
 /* months.jsx styles*/
@@ -43,7 +44,7 @@
     list-style: none;
     width: 80px;
     height: 60px;
-    border: 2px solid black;
+    border: 1px solid black;
     border-radius: 5px;
 }
 
@@ -58,12 +59,28 @@
 }
 
 .emoji {
-    font-size: 20px;
+    font-size: 30px;
+    text-align: center;
 }
 
 /* Form styles */
 #container {
     margin-top: 30px;;
+}
+
+.text-display {
+    background-color: rgb(221, 209, 240);
+    width: 620px;
+    min-height: 200px;
+    border-radius: 5px;
+}
+
+.text-style {
+    padding: 10px 15px;
+}
+
+.form-instructions {
+    text-align: center;
 }
 
 .form-container {
