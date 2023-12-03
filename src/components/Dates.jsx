@@ -1,13 +1,9 @@
 import { datesArr } from "./datesArray.js";
 import { useState } from "react";
 
-export default function Dates({ day, setSelectedDay, month, year }) {
+export default function Dates({ day, setSelectedDay, month, year, emoji }) {
+  // dates array imported from datesArr.js, dates state contains 31 calendar days along with id
   const [dates, setDates] = useState(datesArr);
-
-  //  console.log(dates);
-  // console.log(day);
-  // console.log(month);
-  // console.log(year);
 
   const namedMonth = [
     "January",
@@ -24,45 +20,43 @@ export default function Dates({ day, setSelectedDay, month, year }) {
     "December",
   ];
 
-  // creates a new date object with selected year & month. Added 1 because months is zero indexed for months. Setting it to zero gives you the last day of the selected month
+  // creates a new date object with selected year & month. Added 1 because months is zero indexed in JS for months. Setting it to zero gives you the last day of the selected month
   const date = new Date(year, namedMonth.indexOf(month) + 1, 0);
   // extracts the days of the month from date object
   const daysInMonth = date.getDate();
-  // console.log(date);
-  // console.log(daysInMonth);
-
-  // filter the date objects. Only include date property that is less than or equal to calculated daysInMonth
+  // filter the date objects. Return date property that is less than or equal to calculated daysInMonth.
+  // this will filter correct calender days according to the named month
   const filteredDates = dates.filter((dateObj) => dateObj.date <= daysInMonth);
-  // console.log(filteredDates);
 
-  function handleClickDate(clickedDay, id) {
-    // console.log("clicked");
-    // update selectedDayState
-    setSelectedDay(clickedDay);
-    // setIsClicked(true);
-    // console.log(clickedDay);
-    setDates((prevDates) =>
-      prevDates.map((date) =>
+  function handleClickDate(clickedDay, id, month, year) {
+    // update selectedDayState which will now include the full date when square on calendar is clicked
+    const clickedSquare = `${year}-${month}-${clickedDay}`;
+    setSelectedDay(clickedSquare);
+    // map through the dates array to check if the id of the clickedSquare matches the date id in the date object in date state.
+    // if there is a match, add a property called clicked with a boolean value, and that will conditionally render the className "clicked-color-change"
+    setDates(
+      dates.map((date) =>
         date.id === id
           ? { ...date, clicked: true }
           : { ...date, clicked: false }
       )
     );
   }
-
-  // console.log(day);
+  // could not access the selectedDay state because its scoped to the handleclick function so store it another variable called markedDate
+  const markedDate = `${day}`;
 
   return (
     <ul id="main-date-container">
       {filteredDates.map((day) => {
         return (
           <li
-            onClick={() => handleClickDate(day.date, day.id)}
-            className={day.clicked ? "clicked" : "date-container"}
+            onClick={() => handleClickDate(day.date, day.id, month, year)}
+            className={day.clicked ? "clicked-color-change" : "date-container"}
             key={day.id}
           >
             {day.date}
-            <div className="mail-emoji">💌</div>
+            {/* issue with this condition below. Emoji renders after submit is fired but doesnt stay when a different date text entry is submitted */}
+            {day.clicked && emoji[markedDate] && <div>{emoji[markedDate]}</div>}
           </li>
         );
       })}

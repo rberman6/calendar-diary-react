@@ -1,10 +1,7 @@
 "use client";
 import { useState } from "react";
-import isMyDateValid from "is-my-date-valid";
 
 export default function Years({ year, setSelectedYear }) {
-  console.log(year);
-
   function handleClickIncrement() {
     setSelectedYear(year + 1);
   }

@@ -48,7 +48,7 @@
 }
 
 
-.clicked {
+.clicked-color-change {
     background-color: rgb(255, 218, 224);
     list-style: none;
     width: 80px;
@@ -57,8 +57,12 @@
     border-radius: 5px;
 }
 
-.mail-emoji {
+.hide-emoji {
     visibility: hidden;
+}
+
+.show-emoji {
+    visibility: visible;
 }
 
 /* Form styles */

@@ -13,6 +13,7 @@ export default function App() {
   const [selectedYear, setSelectedYear] = useState(year);
   const [selectedMonth, setSelectedMonth] = useState(month);
   const [selectedDay, setSelectedDay] = useState(day);
+  const [emoji, setEmoji] = useState({});
   // console.log(selectedYear);
 
   return (
@@ -25,8 +26,15 @@ export default function App() {
         setSelectedDay={setSelectedDay}
         month={selectedMonth}
         year={selectedYear}
+        emoji={emoji}
       />
-      <Form day={selectedDay} month={selectedMonth} year={selectedYear} />
+      <Form
+        day={selectedDay}
+        month={selectedMonth}
+        year={selectedYear}
+        emoji={emoji}
+        setEmoji={setEmoji}
+      />
     </main>
   );
 }

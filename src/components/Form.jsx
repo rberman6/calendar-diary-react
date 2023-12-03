@@ -1,18 +1,13 @@
 import { useState } from "react";
 
-export default function Form({ day, month, year }) {
-  // console.log(day);
-  // console.log(month);
-  // console.log(year);
-
+export default function Form({ day, emoji, setEmoji }) {
   // textentry will be obj with specific date property & value will be the text
   const [textEntry, setTextEntry] = useState({});
   // disabled will be obj with specifc date property with a boolean value
-  const [disabled, setDisabled] = useState({});
-  const [emoji, setEmoji] = useState(false);
+  const [displayText, setDisplayText] = useState({});
 
-  function handleOnChange(e, year, month, day) {
-    const date = `${year}-${month}-${day}`;
+  function handleOnChange(e, day) {
+    const date = `${day}`;
     setTextEntry((prevState) => ({
       ...prevState,
       [date]: e.target.value,
@@ -21,32 +16,34 @@ export default function Form({ day, month, year }) {
 
   console.log(textEntry);
 
-  const currentDate = `${year}-${month}-${day}`;
-
-  function handleSubmit(e, year, month, day) {
+  function handleSubmit(e, day) {
     e.preventDefault();
-    const date = `${year}-${month}-${day}`;
-    setDisabled((prevState) => ({
-      ...prevState,
+    const date = `${day}`;
+    setDisplayText({
+      ...displayText,
       [date]: true,
-    }));
+    });
     // Create an obj that stores the specfic date as property and value would be true
     // when user clicks button, textarea will be disable when disable[date] state is true using conditional rendering
+    setEmoji((prevState) => ({
+      ...prevState,
+      [date]: "💌",
+    }));
   }
 
-  console.log(disabled);
+  console.log(emoji);
+
+  const currentDate = `${day}`;
+  console.log(typeof currentDate);
 
   return (
     <div id="container">
-      {disabled[currentDate] ? (
+      {displayText[currentDate] ? (
         <p>{textEntry[currentDate]}</p>
       ) : (
-        <form
-          onSubmit={(e) => handleSubmit(e, year, month, day)}
-          className="form-container"
-        >
+        <form onSubmit={(e) => handleSubmit(e, day)} className="form-container">
           <textarea
-            onChange={(e) => handleOnChange(e, year, month, day)}
+            onChange={(e) => handleOnChange(e, day)}
             value={textEntry[currentDate]}
             cols="76"
             rows="10"
