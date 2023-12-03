@@ -1,6 +1,4 @@
 "use client";
-import { useState } from "react";
-import isMyDateValid from "is-my-date-valid";
 
 export default function Months({ month, setSelectedMonth }) {
   // console.log(typeof month);
