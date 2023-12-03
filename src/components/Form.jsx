@@ -39,7 +39,7 @@ export default function Form({ day, emoji, setEmoji }) {
   return (
     <div id="container">
       {displayText[currentDate] ? (
-        <p>{textEntry[currentDate]}</p>
+        <p className="text-display">{textEntry[currentDate]}</p>
       ) : (
         <form onSubmit={(e) => handleSubmit(e, day)} className="form-container">
           <textarea

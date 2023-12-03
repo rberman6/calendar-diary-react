@@ -56,7 +56,9 @@ export default function Dates({ day, setSelectedDay, month, year, emoji }) {
           >
             {day.date}
             {/* issue with this condition below. Emoji renders after submit is fired but doesnt stay when a different date text entry is submitted */}
-            {day.clicked && emoji[markedDate] && <div>{emoji[markedDate]}</div>}
+            {day.clicked && emoji[markedDate] && (
+              <div className="emoji">{emoji[markedDate]}</div>
+            )}
           </li>
         );
       })}

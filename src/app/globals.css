@@ -57,12 +57,8 @@
     border-radius: 5px;
 }
 
-.hide-emoji {
-    visibility: hidden;
-}
-
-.show-emoji {
-    visibility: visible;
+.emoji {
+    font-size: 20px;
 }
 
 /* Form styles */
