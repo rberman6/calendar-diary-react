@@ -3,7 +3,7 @@ import { useState } from "react";
 export default function Form({ day, emoji, setEmoji }) {
   // textentry will be obj with specific date property & value will be the text
   const [textEntry, setTextEntry] = useState({});
-  // disabled will be obj with specifc date property with a boolean value
+  // displaytext will be obj with specifc date property with a boolean value
   const [displayText, setDisplayText] = useState({});
 
   function handleOnChange(e, day) {
@@ -14,7 +14,7 @@ export default function Form({ day, emoji, setEmoji }) {
     });
   }
 
-  console.log(textEntry);
+  // console.log(textEntry);
 
   function handleSubmit(e, day) {
     e.preventDefault();
@@ -23,18 +23,20 @@ export default function Form({ day, emoji, setEmoji }) {
       ...displayText,
       [dateId]: true,
     });
-    // Create an obj that stores the specfic date as property and value would be true
-    // when user clicks button, textarea will be disable when displayText[dateId] state is true using conditional rendering
+    // Create an obj that stores the specfic dateId as property and value would be true
+    // when user clicks button, textarea & button will not render when displayText[dateId] state is true using conditional rendering.
+
+    // emoji only rendering when entry is added but doesnt remain on that date when another date is clicked. *** Need to fix logic in Form.jsx & Dates.jsx **
     setEmoji({
       ...emoji,
       [dateId]: "💌",
     });
   }
 
-  console.log(emoji);
+  // console.log(emoji);
 
   const currentDate = `${day}`;
-  console.log(typeof currentDate);
+  // console.log(typeof currentDate);
 
   return (
     <div id="container">

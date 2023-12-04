@@ -20,8 +20,9 @@ export default function Dates({ day, setSelectedDay, month, year, emoji }) {
     "December",
   ];
 
-  // creates a new date object with selected year & month. Added 1 because months is zero indexed in JS for months. Setting it to zero gives you the last day of the selected month
+  // creates a new date object with selected year & month. Added 1 because months is zero indexed in JS for months. Setting it to zero gives you the last day of the selected month. This will return full date object
   const date = new Date(year, namedMonth.indexOf(month) + 1, 0);
+  // console.log(typeof date);
   // extracts the days of the month from date object
   const daysInMonth = date.getDate();
   // filter the date objects. Return date property that is less than or equal to calculated daysInMonth.
@@ -42,7 +43,7 @@ export default function Dates({ day, setSelectedDay, month, year, emoji }) {
       )
     );
   }
-  // could not access the selectedDay state because its scoped to the handleclick function so store it another variable called markedDate
+  // could not access the clickedSquare because its scoped to the handleclick function so store it another variable called markedDate
   const markedDate = `${day}`;
 
   return (
@@ -55,10 +56,8 @@ export default function Dates({ day, setSelectedDay, month, year, emoji }) {
             key={day.id}
           >
             {day.date}
-            {/* issue with this condition below. Emoji renders after submit is fired but doesnt stay when a different date text entry is submitted */}
-            {day.clicked && emoji[markedDate] && (
-              <div className="emoji">{emoji[markedDate]}</div>
-            )}
+            {/* issue with this condition below. Emoji renders after submit is fired but doesnt stay in same square when a different date text entry is submitted */}
+            {day.clicked && <div className="emoji">{emoji[markedDate]}</div>}
           </li>
         );
       })}

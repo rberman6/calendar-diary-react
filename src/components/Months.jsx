@@ -19,6 +19,10 @@ export default function Months({ month, setSelectedMonth }) {
 
   function handleClickPrevious() {
     let i = namedMonth.indexOf(month);
+    console.log(i);
+    if (i === 0) {
+      return;
+    }
     if (i < namedMonth.length) {
       i--;
     }
